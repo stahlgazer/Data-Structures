@@ -68,6 +68,7 @@ class LinkedList:
         if self.head is None:
             self.tail = new_head
         self.head = new_head
+        
 
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)

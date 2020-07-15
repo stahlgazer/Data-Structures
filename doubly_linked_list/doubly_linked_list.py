@@ -239,4 +239,8 @@ class DoublyLinkedList:
 
 LL = DoublyLinkedList()
 gav = LL.add_to_head(ListNode('Gavin'))
+testhead= LL.add_to_head(ListNode('Test Head'))
+LL.print_list()
+newtail = LL.add_to_tail(ListNode('New Tail'))
+newhead = LL.add_to_head(ListNode('New Head'))
 LL.print_list()

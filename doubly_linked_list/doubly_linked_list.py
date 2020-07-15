@@ -87,7 +87,7 @@ class DoublyLinkedList:
         new_node = ListNode(value)
         # if DLL is empty
         if self.length == 0:
-            self.head, self.tail = new_node
+            self.head,self.tail = new_node,new_node
             # set head and tail to the new node instance
         # if DLL is not empty
         if self.length > 0:
@@ -108,16 +108,24 @@ class DoublyLinkedList:
     def remove_from_tail(self):
         pass
         # store the value of the tail
+        old_tail = self.tail.value
         # decrement the length of the DLL
+        self.length -= 1
         # delete the tail
-            # if tail.prev is not None
-                # set tail.prev's next to None
-                # set tail to tail.prev
-            # else (if tail.prev is None)
-                # set head to None
-                # set tail to None
-
+        # if tail.prev is not None
+        if self.tail.prev is not None:
+            # set tail.prev's next to None
+            self.tail.prev.next = None
+            # set tail to tail.prev
+            self.tail = tail.prev
+        # else (if tail.prev is None)
+        elif self.tail.prev is None:
+            # set head to None
+            self.head = None
+            # set tail to None
+            self.tail = None
         # return the value
+        return old_tail
             
     """
     Removes the input node from its current spot in the 
@@ -125,7 +133,30 @@ class DoublyLinkedList:
     """
     def move_to_front(self, node):
         pass
-        
+        self.node = node
+        # if already head 
+        if self.head is self.node:
+            # none
+            return None
+        # if tail
+        if self.tail is self.node:
+            # set previous to tail
+            self.tail = self.tail.prev
+        # change previous next to current next
+        self.node.prev.next = self.node.next
+        # if current next is not None
+        if self.node.next is not None:
+            # change next previous to current previous
+            self.node.next.prev = self.node.prev
+        # remove previous on head
+        self.node.prev = None
+        # make next the current head
+        self.node.next = self.head
+        # change head prev to new head
+        self.head.prev = self.node
+        # change head to current node
+        self.head = self.node
+
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.

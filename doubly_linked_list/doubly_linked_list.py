@@ -163,6 +163,29 @@ class DoublyLinkedList:
     """
     def move_to_end(self, node):
         pass
+        self.node = node
+        # if already tail 
+        if self.tail is self.node:
+            # none
+            return None
+        # if head
+        if self.head is self.node:
+            # set next head to new head
+            self.head = self.head.next
+        # change next previous to current previous
+        self.node.next.prev = self.node.prev
+        # if previous is not None
+        if self.node.prev is not None:
+            # change previous next to current next
+            self.node.prev.next = self.node.next
+        # remove next on tail
+        self.node.next = None
+        # make prev the current tail
+        self.node.prev = self.tail
+        # change tail prev to new tail
+        self.tail.next = self.node
+        # change tail to current node
+        self.tail = self.node
 
     """
     Deletes the input node from the List, preserving the 
@@ -170,6 +193,23 @@ class DoublyLinkedList:
     """
     def delete(self, node):
         pass
+        self.node = node
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            self.head, self.tail = None, None
+        else:
+            if self.node is self.head:
+                self.node.next.prev = self.node.prev
+                self.head = self.node.next
+            elif self.node is self.tail:
+                self.node.prev.next = self.node.next
+                self.tail = self.node.prev
+            else:
+                self.node.next.prev = self.node.prev
+                self.node.prev.next = self.node.next
+        self.length -= 1
+        
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -177,3 +217,12 @@ class DoublyLinkedList:
     """
     def get_max(self):
         pass
+        if self.head is None:
+            return None
+        maximum = self.head.value
+        current = self.head
+        while current.next:
+            if current.next.value > maximum:
+                maximum = current.next.value
+            current = current.next
+        return maximum

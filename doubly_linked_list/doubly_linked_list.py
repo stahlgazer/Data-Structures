@@ -10,6 +10,9 @@ class ListNode:
 
     def delete(self):
         pass
+
+    def __str__(self):
+        return str(self.value)
             
 """
 Our doubly-linked list class. It holds references to 
@@ -23,6 +26,13 @@ class DoublyLinkedList:
 
     def __len__(self):
         return self.length
+
+    def print_list(self):
+        cur = self.head
+        print('Nodes in DLL: ')
+        while cur:
+            print(cur.value)
+            cur = cur.next
     
     """
     Wraps the given value in a ListNode and inserts it 
@@ -226,3 +236,7 @@ class DoublyLinkedList:
                 maximum = current.next.value
             current = current.next
         return maximum
+
+LL = DoublyLinkedList()
+gav = LL.add_to_head(ListNode('Gavin'))
+LL.print_list()

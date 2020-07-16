@@ -58,12 +58,25 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
         # forget about the left subtree
-        # iterate through the nodes using a loop construct
+        if self.right is not None:
+            # iterate through the nodes using a loop construct
+            return self.right.get_max()
+        # no self.right means its the maximum   
+        else: return self.value
+        
+        
         pass
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        fn(self.value)
+        if self.right is not None:
+            self.right.for_each(fn)
+        if self.left is not None:
+            self.right.for_each(fn)
+        else: 
+            pass
+
 
     # Part 2 ----------------------- Part 2
     # Part 2 ----------------------- Part 2
@@ -94,3 +107,9 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+tree = BSTNode(1)
+tree.insert(2)
+print(tree.contains(2))
+print(tree.value)

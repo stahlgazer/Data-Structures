@@ -9,7 +9,10 @@ class ListNode:
         self.next = next
 
     def delete(self):
-        pass
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev
 
     def __str__(self):
         return str(self.value)
@@ -240,7 +243,6 @@ class DoublyLinkedList:
 LL = DoublyLinkedList()
 gav = LL.add_to_head(ListNode('Gavin'))
 testhead= LL.add_to_head(ListNode('Test Head'))
-LL.print_list()
 newtail = LL.add_to_tail(ListNode('New Tail'))
 newhead = LL.add_to_head(ListNode('New Head'))
 LL.print_list()

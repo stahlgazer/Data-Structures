@@ -133,9 +133,9 @@ class BSTNode:
     def dft_print(self, node=None):
         pass
         # initialize an empty stack
-        stacks = Stack()
+        stack = []
         # push the root node onto the stack
-        stack.push(self)
+        stack.append(self)
         # need a while loop to manager our iteration
         # if stack is not empty enter the while loop
         while len(stack) > 0:
@@ -146,13 +146,13 @@ class BSTNode:
 
             # if there is a right subtree
             if current.right:
-                # push right item onto the stack
-                stack.push(current.right)
+                # append right item onto the stack
+                stack.append(current.right)
                 
             # if there is a left subtree
             if current.left:
-                # push left item onto the stack
-                stack.push(current.left)
+                # append left item onto the stack
+                stack.append(current.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
